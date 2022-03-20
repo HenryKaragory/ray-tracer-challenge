@@ -6,43 +6,43 @@ class Color:
         self._tuple = (r, g, b)
 
     @property
-    def r(self) -> float:
+    def red(self) -> float:
         return self._tuple[0]
 
     @property
-    def g(self) -> float:
+    def green(self) -> float:
         return self._tuple[1]
 
     @property
-    def b(self) -> float:
+    def blue(self) -> float:
         return self._tuple[2]
 
     def __add__(self, other: 'Color') -> 'Color':
         return Color(
-            self.r + other.r,
-            self.g + other.g,
-            self.b + other.b,
+            self.red + other.red,
+            self.green + other.green,
+            self.blue + other.blue,
         )
 
     def __sub__(self, other: 'Color') -> 'Color':
         return Color(
-            self.r - other.r,
-            self.g - other.g,
-            self.b - other.b,
+            self.red - other.red,
+            self.green - other.green,
+            self.blue - other.blue,
         )
 
     def __mul__(self, other: typing.Any) -> 'Color':
         if isinstance(other, int) or isinstance(other, float):
             return Color(
-                self.r * other,
-                self.g * other,
-                self.b * other
+                self.red * other,
+                self.green * other,
+                self.blue * other
             )
         elif isinstance(other, Color):
             return Color(
-                self.r * other.r,
-                self.g * other.g,
-                self.b * other.b
+                self.red * other.red,
+                self.green * other.green,
+                self.blue * other.blue
             )
         else:
             raise NotImplementedError()
