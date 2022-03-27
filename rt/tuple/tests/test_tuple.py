@@ -21,9 +21,9 @@ class TestTuple(unittest.TestCase):
         t2 = Tuple.Tuple(4, 5, 6, 0)
         t3 = t1 + t2
 
-        self.assertEqual(t3._x, 5)
-        self.assertEqual(t3._y, 7)
-        self.assertEqual(t3._z, 9)
+        self.assertEqual(t3.x, 5)
+        self.assertEqual(t3.y, 7)
+        self.assertEqual(t3.z, 9)
 
     def test_make_point_is_point(self):
         p = Tuple.make_point(1, 2, 3)
@@ -40,10 +40,10 @@ class TestTuple(unittest.TestCase):
         t2 = Tuple.Tuple(4, 5, 7, 0)
         t3 = t1 - t2
 
-        self.assertEqual(t3._x, -3)
-        self.assertEqual(t3._y, -3)
-        self.assertEqual(t3._z, -4)
-        self.assertEqual(t3._w, 1)
+        self.assertEqual(t3.x, -3)
+        self.assertEqual(t3.y, -3)
+        self.assertEqual(t3.z, -4)
+        self.assertEqual(t3.w, 1)
         self.assertTrue(t3.is_point())
 
     def test_subtract_two_vectors(self):
@@ -55,17 +55,17 @@ class TestTuple(unittest.TestCase):
         self.assertTrue(t3.is_vector())
         self.assertFalse(t3.is_point())
 
-        self.assertEqual(t3._x, 3)
-        self.assertEqual(t3._y, 4)
-        self.assertEqual(t3._z, 5)
+        self.assertEqual(t3.x, 3)
+        self.assertEqual(t3.y, 4)
+        self.assertEqual(t3.z, 5)
 
     def test_negate_vector(self):
         v = Tuple.make_vector(1, 2, 3)
         v_negated = v.negate()
 
-        self.assertEqual(v._x, -v_negated._x)
-        self.assertEqual(v._y, -v_negated._y)
-        self.assertEqual(v._z, -v_negated._z)
+        self.assertEqual(v.x, -v_negated.x)
+        self.assertEqual(v.y, -v_negated.y)
+        self.assertEqual(v.z, -v_negated.z)
 
     def test_magnitude(self):
         v = Tuple.make_vector(1, 2, 3)
@@ -95,9 +95,9 @@ class TestTuple(unittest.TestCase):
         v_normalized = v.normalize()
 
         self.assertTrue(is_float_equal(v_normalized.magnitude(), 1.0))
-        self.assertTrue(is_float_equal(v_normalized._x, 1.0/math.sqrt(14)))
-        self.assertTrue(is_float_equal(v_normalized._y, 2.0/math.sqrt(14)))
-        self.assertTrue(is_float_equal(v_normalized._z, 3.0/math.sqrt(14)))
+        self.assertTrue(is_float_equal(v_normalized.x, 1.0 / math.sqrt(14)))
+        self.assertTrue(is_float_equal(v_normalized.y, 2.0 / math.sqrt(14)))
+        self.assertTrue(is_float_equal(v_normalized.z, 3.0 / math.sqrt(14)))
 
     def test_dot_product(self):
         left = Tuple.make_vector(1, 2, 3)
@@ -106,8 +106,8 @@ class TestTuple(unittest.TestCase):
         expected_dot_product = 20.0
         actual_dot_product = Tuple.dot(left, right)
 
-        self.assertTrue(is_float_equal(
-            actual_dot_product, expected_dot_product))
+        self.assertTrue(
+            is_float_equal(actual_dot_product, expected_dot_product))
 
     def test_cross_product_1(self):
         left = Tuple.make_vector(1, 2, 3)
